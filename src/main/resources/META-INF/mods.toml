@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="Academic Free License v3.0"
+
+[[mods]]
+modId="killer_rabbit_transformation"
+version="1.0.0"
+displayName="Killer Rabbit Transformation"
+credits="Created using mod maker MCreator - https://mcreator.net/about"
+displayURL="https://donmor.top/"
+authors="donmor3000"
+description='''
+Transform a rabbit to killer bunny
+'''
+
+[[dependencies.killer_rabbit_transformation]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+

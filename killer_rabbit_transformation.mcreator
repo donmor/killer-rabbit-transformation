@@ -1,0 +1,201 @@
+{
+  "mod_elements": [
+    {
+      "name": "OnEntityDeath",
+      "type": "procedure",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "on_entity_death",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntityDeathProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OnEntityTick",
+      "type": "procedure",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "on_entity_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntityTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WeNeedHolyHandGrenade",
+      "type": "achievement",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "we_need_holy_hand_grenade",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/killer_rabbit_transformation/advancements/we_need_holy_hand_grenade.json"
+        ]
+      }
+    },
+    {
+      "name": "OnEntityTargeting",
+      "type": "procedure",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "on_entity_targeting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntityTargetingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AsWhatHappenedIn",
+      "type": "achievement",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "as_what_happened_in",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/killer_rabbit_transformation/advancements/as_what_happened_in.json"
+        ]
+      }
+    },
+    {
+      "name": "OnExplosion",
+      "type": "procedure",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "on_explosion",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnExplosionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "OnEntitySpawn",
+      "type": "procedure",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "on_entity_spawn",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntitySpawnProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "language_map": {
+    "en_us": {
+      "advancements.as_what_happened_in.descr": "Get a killer rabbit killed in an explosion",
+      "advancements.we_need_holy_hand_grenade.title": "We need Holy Hand Grenade!",
+      "advancements.we_need_holy_hand_grenade.descr": "You are attacked by a horrible little creature.",
+      "advancements.as_what_happened_in.title": "As what happened in..."
+    },
+    "zh_cn": {
+      "advancements.as_what_happened_in.descr": "使一只杀手免死于一场爆炸。",
+      "advancements.we_need_holy_hand_grenade.title": "我们需要神圣手榴弹！",
+      "advancements.we_need_holy_hand_grenade.descr": "你被一只可怕的小生物袭击了。",
+      "advancements.as_what_happened_in.title": "就像在■■■■■里那样……"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "killer_rabbit_transformation",
+    "modName": "Killer Rabbit Transformation",
+    "version": "1.0.0",
+    "description": "Transform a rabbit to killer bunny",
+    "author": "donmor3000",
+    "websiteURL": "https://donmor.top/",
+    "license": "Academic Free License v3.0",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.18.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "net.mcreator.killerrabbittransformation",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202300110610
+}

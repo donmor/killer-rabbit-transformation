@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:rabbit_hide"
+    },
+    "title": {
+      "translate": "advancements.as_what_happened_in.title"
+    },
+    "description": {
+      "translate": "advancements.as_what_happened_in.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "as_what_happened_in": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "killer_rabbit_transformation:we_need_holy_hand_grenade"
+}

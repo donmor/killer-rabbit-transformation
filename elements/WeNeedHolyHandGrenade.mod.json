@@ -1,0 +1,25 @@
+{
+  "_fv": 39,
+  "_type": "achievement",
+  "definition": {
+    "achievementName": "We need Holy Hand Grenade!",
+    "achievementDescription": "You are attacked by a horrible little creature.",
+    "achievementIcon": {
+      "value": "Blocks.SKULL#0"
+    },
+    "background": "Default",
+    "disableDisplay": false,
+    "showPopup": true,
+    "announceToChat": true,
+    "hideIfNotCompleted": true,
+    "rewardLoot": [],
+    "rewardRecipes": [],
+    "rewardFunction": "No function",
+    "rewardXP": 0,
+    "achievementType": "goal",
+    "parent": {
+      "value": "adventure/root"
+    },
+    "triggerxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"custom_trigger\" x=\"56\" y=\"88\"><next><block type=\"advancement_trigger\" deletable=\"false\"></block></next></block></xml>"
+  }
+}

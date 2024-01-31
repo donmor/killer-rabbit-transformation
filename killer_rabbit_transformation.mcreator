@@ -185,7 +185,7 @@
     "description": "Transform a rabbit to killer bunny",
     "author": "donmor3000",
     "websiteURL": "https://donmor.top/",
-    "license": "Academic Free License v3.0",
+    "license": "Creative Commons Attribution-NonCommercial-NoDerives 4.0",
     "disableForgeVersionCheck": true,
     "serverSideOnly": false,
     "requiredMods": [],

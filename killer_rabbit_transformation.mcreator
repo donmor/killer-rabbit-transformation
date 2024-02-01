@@ -8,9 +8,6 @@
       "locked_code": false,
       "registry_name": "on_entity_death",
       "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntityDeathProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -47,9 +44,6 @@
       "locked_code": false,
       "registry_name": "on_entity_tick",
       "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntityTickProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -79,9 +73,6 @@
       "locked_code": false,
       "registry_name": "on_entity_targeting",
       "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntityTargetingProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -115,9 +106,6 @@
       "locked_code": false,
       "registry_name": "on_explosion",
       "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnExplosionProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "x",
@@ -146,9 +134,6 @@
       "locked_code": false,
       "registry_name": "on_entity_spawn",
       "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/killerrabbittransformation/procedures/OnEntitySpawnProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -187,7 +172,7 @@
     "websiteURL": "https://donmor.top/",
     "license": "Creative Commons Attribution-NonCommercial-NoDerives 4.0",
     "disableForgeVersionCheck": true,
-    "serverSideOnly": false,
+    "serverSideOnly": true,
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],

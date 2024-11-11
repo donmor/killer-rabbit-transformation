@@ -1,0 +1,41 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "The Unlicense"
+
+[[mods]]
+modId = "killer_rabbit_transformation"
+version = "${version}"
+displayName = "Killer Bunny Tweaks"
+authors = "donmor"
+description = '''
+Now there's a chance to have a rabbit transformed to a killer bunny.
+'''
+itemIcon = "minecraft:skeleton_skull"
+updateJSONURL = "https://raw.githubusercontent.com/donmor/killer_rabbit_transformation/refs/heads/1.20.1/versions.json"
+#logoFile = ""
+displayTest="IGNORE_SERVER_VERSION"
+
+[[dependencies.killer_rabbit_transformation]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.killer_rabbit_transformation]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.killer_rabbit_transformation]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.2.14,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[modproperties.killer_rabbit_transformation]
+    catalogueImageIcon="assets/killer_rabbit_transformation/icon.png"

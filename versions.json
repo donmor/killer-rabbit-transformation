@@ -1,7 +1,7 @@
 {
     "homepage": "https://github.com/donmor/killer_rabbit_transformation",
     "1.20.1": {
-      "2.0.0": "Refactored from scratch\n- Now powered by Architectury API, supporting Fabric\n- All features configurable\n  - Spawing chance defaults to 1/2500 (matches vanilla before removed)\n- Can attack Piglin-likes and rip off their heads\nVictims are now data-driven, any mob can be defined as player/villager/creeper/piglin-like in datapacks (please refer to the repository)"
+      "2.0.0": "Refactored from scratch\n- Now powered by Architectury API, supporting Fabric\n- All features configurable\n  - Spawning chance defaults to 1/2500 (matches vanilla before removed)\n- Can attack Piglin-likes and rip off their heads\nVictims are now data-driven, any mob can be defined as player/villager/creeper/piglin-like in datapacks (please refer to the repository)"
     },
     "promos": {
       "1.20.1-latest": "2.0.0",

@@ -47,7 +47,7 @@ public final class KillerBunnyTweaksModFabric implements ModInitializer {
                 .registerReloadListener(new SimpleSynchronousResourceReloadListener() {
                     @Override
                     public ResourceLocation getFabricId() {
-                        return new ResourceLocation(KillerBunnyTweaksMod.MOD_ID, "villager_like");
+                        return new ResourceLocation(KillerBunnyTweaksMod.MOD_ID, "modded_mobs");
                     }
 
                     @Override
@@ -142,6 +142,6 @@ public final class KillerBunnyTweaksModFabric implements ModInitializer {
                 KBTEvents.OnEntityTick(entity);
             return InteractionResult.PASS;
         });
-        KillerBunnyTweaksMod.init(KillerBunnyTweaksMod.ModLoader.ML_FABRIC);
+        KillerBunnyTweaksMod.init();
     }
 }

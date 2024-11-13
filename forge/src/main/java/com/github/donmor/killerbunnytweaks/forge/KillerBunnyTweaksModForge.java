@@ -118,6 +118,6 @@ public final class KillerBunnyTweaksModForge {
                         && vw.get() instanceof Integer value ? value : 0;
             }
         };
-        KillerBunnyTweaksMod.init(KillerBunnyTweaksMod.ModLoader.ML_FORGE);
+        KillerBunnyTweaksMod.init();
     }
 }

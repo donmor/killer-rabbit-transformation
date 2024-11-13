@@ -1,56 +1,31 @@
 package com.github.donmor.killerbunnytweaks;
 
 import java.io.BufferedReader;
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.properties.PropertyMap;
-
 import dev.architectury.event.EventResult;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementList;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.core.UUIDUtil;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.commands.AdvancementCommands;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.damagesource.DamageEffects;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
-import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Rabbit;
-import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.AbstractIllager;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Creeper;
@@ -58,47 +33,51 @@ import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.npc.AbstractVillager;
-import net.minecraft.world.entity.npc.Npc;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 public final class KBTEvents {
 
     public static EventResult OnEntityAdd(Entity entity, Level world) {
+        // Logically SSO
         if (!(world instanceof ServerLevel)) {
             return EventResult.pass();
         }
+
         if (entity instanceof Rabbit rabbit) {
+            // Rabbit transforming under certain circumstances
             if (rabbit.getVariant() != Rabbit.Variant.EVIL
                     && Math.random() * 10000.0 < KillerBunnyTweaksMod.options.TransformingChance()) {
                 rabbit.setVariant(Rabbit.Variant.EVIL);
             }
+            // Modify existing killer bunnies (and transformed as well)
             if (rabbit.getVariant() == Rabbit.Variant.EVIL) {
                 makeRabbitEviler(rabbit, world);
             }
         }
+
         return EventResult.pass();
 
     }
 
     static EventResult OnEntityDeath(LivingEntity entity, DamageSource source) {
+        // Logically SSO
         Level world = entity.level();
         if (!(world instanceof ServerLevel))
             return EventResult.pass();
-        double x = entity.getX(), y = entity.getY(), z = entity.getZ();
+
+        // Holy Hand Grenade advancement
         if (entity instanceof Rabbit rabbit && rabbit.getVariant() == Rabbit.Variant.EVIL
                 && (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)
-                        || source.is(DamageTypes.FIREWORKS)))
+                        || source.is(DamageTypes.FIREWORKS))) {
+            double x = entity.getX(), y = entity.getY(), z = entity.getZ();
             if (source.getEntity() instanceof ServerPlayer player)
                 giveAdvancementToPlayer(player,
                         new ResourceLocation("killer_rabbit_transformation:as_what_happened_in"));
@@ -112,6 +91,9 @@ public final class KBTEvents {
                 giveAdvancementToPlayer(_player,
                         new ResourceLocation("killer_rabbit_transformation:as_what_happened_in"));
             }
+        }
+
+        // Bunny head ripping
         if (source.getEntity() instanceof Rabbit rabbit && rabbit.getVariant() == Rabbit.Variant.EVIL) {
             if (entity.getClass() == Zombie.class
                     && Math.random() * 100 < KillerBunnyTweaksMod.options.ZombieHeadDropChance())
@@ -138,10 +120,12 @@ public final class KBTEvents {
                     entity.spawnAtLocation(headStack);
             }
         }
+
         return EventResult.pass();
     }
 
     static EventResult OnEntityHurt(LivingEntity entity, DamageSource source, float dmg) {
+        // Bite by a bunny, survived or not, then get an advancement
         if (source.getEntity() instanceof Rabbit rabbit && rabbit.getVariant() == Rabbit.Variant.EVIL
                 && entity instanceof ServerPlayer player) {
             giveAdvancementToPlayer(player,
@@ -154,6 +138,7 @@ public final class KBTEvents {
         if (!KillerBunnyTweaksMod.options.CanWeaknessTransform())
             return;
         Level world = entity.level();
+        // Try to mske a weakened rabbit evil, 20 times per sec
         if (world instanceof ServerLevel && entity instanceof Rabbit rabbit
                 && rabbit.getVariant() != Rabbit.Variant.EVIL
                 && rabbit.hasEffect(MobEffects.WEAKNESS)
@@ -163,6 +148,12 @@ public final class KBTEvents {
         }
     }
 
+    /**
+     * Give an advancement to a player
+     * 
+     * @param player The target
+     * @param v      The advancement
+     */
     private static void giveAdvancementToPlayer(ServerPlayer player, ResourceLocation v) {
         Advancement _adv = player.server.getAdvancements()
                 .getAdvancement(v);
@@ -174,6 +165,12 @@ public final class KBTEvents {
         }
     }
 
+    /**
+     * Generate an itemstack of a player's head
+     * 
+     * @param player The victim
+     * @return The itemstack
+     */
     private static ItemStack getPlayerHeadStack(ServerPlayer player) {
         GameProfile gameProfile = player.getGameProfile();
         if (gameProfile == null)
@@ -187,6 +184,7 @@ public final class KBTEvents {
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private static void makeRabbitEviler(Rabbit rabbit, Level world) {
+        // Vanilla entities to be attacked
         try {
             if (KillerBunnyTweaksMod.options.BunnyAttacksPlayerLikes()) { // Player-like
                 rabbit.targetSelector.addGoal(2,
@@ -216,10 +214,12 @@ public final class KBTEvents {
         if (KillerBunnyTweaksMod.moddedEntities == null)
             return;
         try {
+            // Iterate each category in moddedEntities
             for (KillerBunnyTweaksMod.ModdedEntityCategory category : KillerBunnyTweaksMod.moddedEntities.keySet())
                 if (category.valid())
                     for (EntityType<?> entityType : KillerBunnyTweaksMod.moddedEntities.get(category)) {
                         if (!KillerBunnyTweaksMod.moddedEntityClasses.get(category).containsKey(entityType)) {
+                            // Class not yet cached, fetching (by creating one and remove)
                             Entity e = entityType.create(world);
                             if (e instanceof Mob m)
                                 KillerBunnyTweaksMod.moddedEntityClasses.get(category).put(entityType, m.getClass());
@@ -240,7 +240,12 @@ public final class KBTEvents {
                 Map.entry(KillerBunnyTweaksMod.ModdedEntityCategory.VILLAGER_LIKE,
                         new ArrayList<EntityType<?>>()),
                 Map.entry(KillerBunnyTweaksMod.ModdedEntityCategory.PLAYER_LIKE,
+                        new ArrayList<EntityType<?>>()),
+                Map.entry(KillerBunnyTweaksMod.ModdedEntityCategory.CREEPER_LIKE,
+                        new ArrayList<EntityType<?>>()),
+                Map.entry(KillerBunnyTweaksMod.ModdedEntityCategory.PIGLIN_LIKE,
                         new ArrayList<EntityType<?>>()));
+        // Get EntityTypes from data
         for (KillerBunnyTweaksMod.ModdedEntityCategory category : KillerBunnyTweaksMod.moddedEntities
                 .keySet())
             try (BufferedReader reader = resourceManager

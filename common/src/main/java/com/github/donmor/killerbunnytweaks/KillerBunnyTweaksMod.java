@@ -12,20 +12,25 @@ import net.minecraft.world.entity.EntityType;
 public final class KillerBunnyTweaksMod {
         public static final String MOD_ID = "killer_rabbit_transformation";
 
-        public static enum ModLoader {
-                ML_FORGE,
-                ML_FABRIC;
-        }
-
         public static KBTConfigIF options;
 
+        /**
+         * key: category, value: clazz;
+         * Pre-initialized
+         */
         static Map<ModdedEntityCategory, HashMap<EntityType<?>, Class<?>>> moddedEntityClasses = Map
                         .ofEntries(Map.entry(ModdedEntityCategory.VILLAGER_LIKE,
                                         new HashMap<EntityType<?>, Class<?>>()),
                                         Map.entry(ModdedEntityCategory.PLAYER_LIKE,
                                                         new HashMap<EntityType<?>, Class<?>>()));
+        /**
+         * key: category, value: list of EntityTypes
+         */
         static Map<ModdedEntityCategory, ArrayList<EntityType<?>>> moddedEntities = null;
 
+        /**
+         * key: category, value: {l: desc, m: l10n, r: [key: config, value: {l: desc, m: l10n, r: V}]}
+         */
         public static final Map<String, ImmutableTriple<String, String, Map<String, ImmutableTriple<String, String, ?>>>> CONF_SPEC = Map
                         .of(
                                         "General", ImmutableTriple.of(
@@ -94,7 +99,7 @@ public final class KillerBunnyTweaksMod {
                                                                                         "config.killer_rabbit_transformation.player_head_drop_chance",
                                                                                         100))));
 
-        public static void init(ModLoader l) {
+        public static void init() {
                 // Write common init code here.
                 EntityEvent.ADD.register(KBTEvents::OnEntityAdd);
                 EntityEvent.LIVING_DEATH.register(KBTEvents::OnEntityDeath);
@@ -200,7 +205,9 @@ public final class KillerBunnyTweaksMod {
 
         enum ModdedEntityCategory {
                 VILLAGER_LIKE,
-                PLAYER_LIKE;
+                PLAYER_LIKE,
+                CREEPER_LIKE,
+                PIGLIN_LIKE;
 
                 boolean valid() {
                         switch (this) {
@@ -208,6 +215,10 @@ public final class KillerBunnyTweaksMod {
                                         return options.BunnyAttacksVillagerLikes();
                                 case PLAYER_LIKE:
                                         return options.BunnyAttacksPlayerLikes();
+                                case CREEPER_LIKE:
+                                        return options.BunnyAttacksCreepers();
+                                case PIGLIN_LIKE:
+                                        return options.BunnyAttacksPiglins();
                                 default:
                                         return false;
                         }

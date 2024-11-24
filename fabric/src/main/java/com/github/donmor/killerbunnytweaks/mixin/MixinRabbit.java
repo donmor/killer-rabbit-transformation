@@ -15,6 +15,6 @@ public abstract class MixinRabbit {
     @Inject(method = "readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V", at = @At("RETURN"))
     private void atReadAdditionalSaveData(CompoundTag compoundTag, CallbackInfo info) {
         Rabbit e = (Rabbit) (Object) this;
-        KBTEvents.OnEntityAdd(e, e.level());
+        KBTEvents.OnEntityAdd(e, e.getLevel());
     }
 }

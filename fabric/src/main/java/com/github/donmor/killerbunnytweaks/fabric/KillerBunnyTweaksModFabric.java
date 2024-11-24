@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.InteractionResult;
+import net.minecraftforge.api.ModLoadingContext;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -15,7 +16,6 @@ import com.github.donmor.killerbunnytweaks.KBTEvents;
 import com.github.donmor.killerbunnytweaks.KillerBunnyTweaksMod;
 import com.github.donmor.killerbunnytweaks.KillerBunnyTweaksMod.KBTConfigIF;
 import com.github.donmor.killerbunnytweaks.fabric.events.EntityTickCallback;
-import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 
 public final class KillerBunnyTweaksModFabric implements ModInitializer {
     @Override
@@ -41,7 +41,7 @@ public final class KillerBunnyTweaksModFabric implements ModInitializer {
                     });
                     return new KBTModConfig();
                 }).getValue();
-        ForgeConfigRegistry.INSTANCE.register(KillerBunnyTweaksMod.MOD_ID, Type.COMMON, config);
+        ModLoadingContext.registerConfig(KillerBunnyTweaksMod.MOD_ID, Type.COMMON, config);
 
         ResourceManagerHelper.get(PackType.SERVER_DATA)
                 .registerReloadListener(new SimpleSynchronousResourceReloadListener() {
@@ -116,12 +116,6 @@ public final class KillerBunnyTweaksModFabric implements ModInitializer {
             @Override
             public int CreeperHeadDropChance() {
                 return config.getValues().get("BunnyHeadRipping.CreeperHeadDropChance") instanceof ConfigValue<?> vw
-                        && vw.get() instanceof Integer value ? value : 0;
-            }
-
-            @Override
-            public int PiglinHeadDropChance() {
-                return config.getValues().get("BunnyHeadRipping.PiglinHeadDropChance") instanceof ConfigValue<?> vw
                         && vw.get() instanceof Integer value ? value : 0;
             }
 

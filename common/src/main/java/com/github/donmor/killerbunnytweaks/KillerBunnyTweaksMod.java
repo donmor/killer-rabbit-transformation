@@ -86,10 +86,6 @@ public final class KillerBunnyTweaksMod {
                                                                                         "Creepers slain by Killer Bunnies drop their heads (x% chance)",
                                                                                         "config.killer_rabbit_transformation.creeper_head_drop_chance",
                                                                                         50),
-                                                                        "PiglinHeadDropChance", ImmutableTriple.of(
-                                                                                        "Piglins slain by Killer Bunnies drop their heads (x% chance)",
-                                                                                        "config.killer_rabbit_transformation.piglin_head_drop_chance",
-                                                                                        50),
                                                                         "DragonHeadDropChance", ImmutableTriple.of(
                                                                                         "The Ender Dragon drop its head if killed by a rabbit (x% chance). Impossible unless tame the rabbit using other mods",
                                                                                         "config.killer_rabbit_transformation.dragon_head_drop_chance",
@@ -179,13 +175,6 @@ public final class KillerBunnyTweaksMod {
                  * @return int x out of 100
                  */
                 int CreeperHeadDropChance();
-
-                /**
-                 * Piglins slain by Killer Bunnies drop their heads (x% chance)
-                 * 
-                 * @return int x out of 100
-                 */
-                int PiglinHeadDropChance();
 
                 /**
                  * The Ender Dragon drop its head if killed by a rabbit (x% chance)

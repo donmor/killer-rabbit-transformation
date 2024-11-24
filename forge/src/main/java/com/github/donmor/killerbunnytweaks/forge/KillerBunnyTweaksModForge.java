@@ -101,12 +101,6 @@ public final class KillerBunnyTweaksModForge {
             }
 
             @Override
-            public int PiglinHeadDropChance() {
-                return config.getValues().get("BunnyHeadRipping.PiglinHeadDropChance") instanceof ConfigValue<?> vw
-                        && vw.get() instanceof Integer value ? value : 0;
-            }
-
-            @Override
             public int DragonHeadDropChance() {
                 return config.getValues().get("BunnyHeadRipping.DragonHeadDropChance") instanceof ConfigValue<?> vw
                         && vw.get() instanceof Integer value ? value : 0;

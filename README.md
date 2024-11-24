@@ -1,5 +1,5 @@
 ## Killer Bunny Tweaks
-[![Minecraft](https://img.shields.io/badge/1.20.1-white?style=for-the-badge&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjCGJ1kDAAACoElEQVQ4T22SeU8aURTF%2FULGtNRWWVQY9lXABWldIDPIMgVbNgEVtaa0damiqGBdipXaJcY2ofEf4ycbTt97pVAabzK5b27u%2BZ377kwXgK77QthRy7OfXbeJM%2BttqKSXN8sdwbT%2FA0L7elmsYqrPHZmROLPh5YkV4oEBwaKuHj%2ByyJptLDoAhbq3O1V1XCVObY3FL24mfn5oRPrcwSCRfQOyNWcjVjZdCbtcdwcgXrXUspdOKbDN%2FXE9tiBJMhXHT60gUIT2dMhcDLMc3NVKQklz0QIkf5qlyEcO6Qs7yPhMJB4amDMFimQSmqNlE8SKAZFzDfxHfVILIIZ10sJ3OwIbcqSuiOjchkzNCboHev9o2YhgiUP8mxnLN24I6%2F3ghYdtQG5iUMpFBuCP9iKwLsfiLyeCp2rMnZgwX3NArGoxW1Ridl%2BBzLEVKa8KSxOqNmDdz0kFnxaLHhWEgAyZigWhHXL%2BpEDy2ozsDxv8vAzTnh7w5kcghqCaFmCT10of4iPIT2mRdPUh4HoCcVwBH%2F8Ac2kzUkEV5r3EfVSOvbAJa5NDyI0r2oDtWb1EClh%2BOoC3Pg7v%2FBw7p939yI4rsRW2Y3lKh01eh7WpIRyKZqzyjjYgPdIvlaMWRqYuG7wWryYHsRM0sFolZiPvQ3jheIwSmSBPdkByG%2FB6Wi3RYiVmRX7GiAPiUCRisii8D%2BjZNKvPBrHCW1GY0bAz6WkDCtOaSyKQFsi4K5NqNiZtehN2Y5uAShETqolhBqJXpfdPuPsuWwAaRdHSkxdc11mPqkGnyY4pyKbpl1GyJ0Pel7yqBoFcF3zqno5f%2Bd8ohYy9Sx7lzQpxo1eirluCDgt%2B%2B00p6uxttrG4F%2FA39sJGZWZMfrcp6O6%2B5kaVzXJHAOj6DeSs8qw5o8oxAAAAAElFTkSuQmCC&labelColor=black)](https://minecraft.net/)
+[![Minecraft](https://img.shields.io/badge/1.19.2-white?style=for-the-badge&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjCGJ1kDAAACoElEQVQ4T22SeU8aURTF%2FULGtNRWWVQY9lXABWldIDPIMgVbNgEVtaa0damiqGBdipXaJcY2ofEf4ycbTt97pVAabzK5b27u%2BZ377kwXgK77QthRy7OfXbeJM%2BttqKSXN8sdwbT%2FA0L7elmsYqrPHZmROLPh5YkV4oEBwaKuHj%2ByyJptLDoAhbq3O1V1XCVObY3FL24mfn5oRPrcwSCRfQOyNWcjVjZdCbtcdwcgXrXUspdOKbDN%2FXE9tiBJMhXHT60gUIT2dMhcDLMc3NVKQklz0QIkf5qlyEcO6Qs7yPhMJB4amDMFimQSmqNlE8SKAZFzDfxHfVILIIZ10sJ3OwIbcqSuiOjchkzNCboHev9o2YhgiUP8mxnLN24I6%2F3ghYdtQG5iUMpFBuCP9iKwLsfiLyeCp2rMnZgwX3NArGoxW1Ridl%2BBzLEVKa8KSxOqNmDdz0kFnxaLHhWEgAyZigWhHXL%2BpEDy2ozsDxv8vAzTnh7w5kcghqCaFmCT10of4iPIT2mRdPUh4HoCcVwBH%2F8Ac2kzUkEV5r3EfVSOvbAJa5NDyI0r2oDtWb1EClh%2BOoC3Pg7v%2FBw7p939yI4rsRW2Y3lKh01eh7WpIRyKZqzyjjYgPdIvlaMWRqYuG7wWryYHsRM0sFolZiPvQ3jheIwSmSBPdkByG%2FB6Wi3RYiVmRX7GiAPiUCRisii8D%2BjZNKvPBrHCW1GY0bAz6WkDCtOaSyKQFsi4K5NqNiZtehN2Y5uAShETqolhBqJXpfdPuPsuWwAaRdHSkxdc11mPqkGnyY4pyKbpl1GyJ0Pel7yqBoFcF3zqno5f%2Bd8ohYy9Sx7lzQpxo1eirluCDgt%2B%2B00p6uxttrG4F%2FA39sJGZWZMfrcp6O6%2B5kaVzXJHAOj6DeSs8qw5o8oxAAAAAElFTkSuQmCC&labelColor=black)](https://minecraft.net/)
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/969281?style=for-the-badge&logo=curseforge&label=CurseForge&labelColor=black)](https://www.curseforge.com/minecraft/mc-mods/killer-rabbit-transformation)
 [![Modrinth Downloads](https://img.shields.io/modrinth/dt/cfTpk4Ed?style=for-the-badge&logo=modrinth&label=Modrinth&labelColor=black)](https://modrinth.com/mod/killer-bunny-tweaks)
 [![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/donmor/killer-rabbit-transformation/latest/total?style=for-the-badge&logo=github&labelColor=black)](https://github.com/donmor/killer-rabbit-transformation/releases/latest)
@@ -12,7 +12,7 @@
 Minecraft mod that tweaks rabbits
 
 #### Summary
-This mod makes killer bunnies able to spawn (incidence rate as low as 0.02% by default). You can also turn an ordinary rabbit to a killer by using splash potion of weakness. Killer bunnies now also attack villagers, illagers, witches, zombies, creepers, skeletons and piglins. Zombies, creepers, skeletons, piglins and players killed by killer bunnies now drop their skulls (drop rate as high as 50% bydefault, for players it's 100%).
+This mod makes killer bunnies able to spawn (incidence rate as low as 0.02% by default). You can also turn an ordinary rabbit to a killer by using splash potion of weakness. Killer bunnies now also attack villagers, illagers, witches, zombies, creepers, skeletons and piglins. Zombies, creepers, skeletons and players killed by killer bunnies now drop their skulls (drop rate as high as 50% bydefault, for players it's 100%).
 
 #### Configuration
 `config/killer_rabbit_transformation-common.toml`
@@ -38,8 +38,6 @@ This mod makes killer bunnies able to spawn (incidence rate as low as 0.02% by d
 
 #Bunny Head Ripping
 [BunnyHeadRipping]
-	#Piglins slain by Killer Bunnies drop their heads (x% chance)
-	PiglinHeadDropChance = 50
 	#Wither Skeletons slain by Killer Bunnies drop their skulls (x% chance)
 	WitherSkeletonHeadDropChance = 50
 	#Zombies slain by Killer Bunnies drop their heads (x% chance)

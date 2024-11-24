@@ -17,7 +17,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -34,7 +33,6 @@ import net.minecraft.world.entity.monster.Witch;
 import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -53,12 +51,12 @@ public final class KBTEvents {
 
         if (entity instanceof Rabbit rabbit) {
             // Rabbit transforming under certain circumstances
-            if (rabbit.getVariant() != Rabbit.Variant.EVIL
+            if (rabbit.getRabbitType() != Rabbit.TYPE_EVIL
                     && Math.random() * 10000.0 < KillerBunnyTweaksMod.options.TransformingChance()) {
-                rabbit.setVariant(Rabbit.Variant.EVIL);
+                rabbit.setRabbitType(Rabbit.TYPE_EVIL);
             }
             // Modify existing killer bunnies (and transformed as well)
-            if (rabbit.getVariant() == Rabbit.Variant.EVIL) {
+            if (rabbit.getRabbitType() == Rabbit.TYPE_EVIL) {
                 makeRabbitEviler(rabbit, world);
             }
         }
@@ -69,14 +67,13 @@ public final class KBTEvents {
 
     static EventResult OnEntityDeath(LivingEntity entity, DamageSource source) {
         // Logically SSO
-        Level world = entity.level();
+        Level world = entity.getLevel();
         if (!(world instanceof ServerLevel))
             return EventResult.pass();
 
         // Holy Hand Grenade advancement
-        if (entity instanceof Rabbit rabbit && rabbit.getVariant() == Rabbit.Variant.EVIL
-                && (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION)
-                        || source.is(DamageTypes.FIREWORKS))) {
+        if (entity instanceof Rabbit rabbit && rabbit.getRabbitType() == Rabbit.TYPE_EVIL
+                && source.isExplosion()) {
             double x = entity.getX(), y = entity.getY(), z = entity.getZ();
             if (source.getEntity() instanceof ServerPlayer player)
                 giveAdvancementToPlayer(player,
@@ -94,7 +91,7 @@ public final class KBTEvents {
         }
 
         // Bunny head ripping
-        if (source.getEntity() instanceof Rabbit rabbit && rabbit.getVariant() == Rabbit.Variant.EVIL) {
+        if (source.getEntity() instanceof Rabbit rabbit && rabbit.getRabbitType() == Rabbit.TYPE_EVIL) {
             if (entity.getClass() == Zombie.class
                     && Math.random() * 100 < KillerBunnyTweaksMod.options.ZombieHeadDropChance())
                 entity.spawnAtLocation(Items.ZOMBIE_HEAD);
@@ -107,9 +104,6 @@ public final class KBTEvents {
             else if (entity.getClass() == Creeper.class
                     && Math.random() * 100 < KillerBunnyTweaksMod.options.CreeperHeadDropChance())
                 entity.spawnAtLocation(Items.CREEPER_HEAD);
-            else if (entity.getClass() == Piglin.class
-                    && Math.random() * 100 < KillerBunnyTweaksMod.options.PiglinHeadDropChance())
-                entity.spawnAtLocation(Items.PIGLIN_HEAD);
             else if (entity.getClass() == EnderDragon.class
                     && Math.random() * 100 < KillerBunnyTweaksMod.options.DragonHeadDropChance())
                 entity.spawnAtLocation(Items.DRAGON_HEAD);
@@ -126,7 +120,7 @@ public final class KBTEvents {
 
     static EventResult OnEntityHurt(LivingEntity entity, DamageSource source, float dmg) {
         // Bite by a bunny, survived or not, then get an advancement
-        if (source.getEntity() instanceof Rabbit rabbit && rabbit.getVariant() == Rabbit.Variant.EVIL
+        if (source.getEntity() instanceof Rabbit rabbit && rabbit.getRabbitType() == Rabbit.TYPE_EVIL
                 && entity instanceof ServerPlayer player) {
             giveAdvancementToPlayer(player,
                     new ResourceLocation("killer_rabbit_transformation:we_need_holy_hand_grenade"));
@@ -137,13 +131,13 @@ public final class KBTEvents {
     public static void OnEntityTick(Entity entity) {
         if (!KillerBunnyTweaksMod.options.CanWeaknessTransform())
             return;
-        Level world = entity.level();
+        Level world = entity.getLevel();
         // Try to mske a weakened rabbit evil, 20 times per sec
         if (world instanceof ServerLevel && entity instanceof Rabbit rabbit
-                && rabbit.getVariant() != Rabbit.Variant.EVIL
+                && rabbit.getRabbitType() != Rabbit.TYPE_EVIL
                 && rabbit.hasEffect(MobEffects.WEAKNESS)
                 && Math.random() * 10000.0 < KillerBunnyTweaksMod.options.TransformingChance()) {
-            rabbit.setVariant(Rabbit.Variant.EVIL);
+            rabbit.setRabbitType(Rabbit.TYPE_EVIL);
             makeRabbitEviler(rabbit, world);
         }
     }
